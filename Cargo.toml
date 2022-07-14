@@ -1,0 +1,51 @@
+[package]
+name = "binator_number"
+authors = ["Stargateur"]
+version = "0.0.0"
+description = "binator combinator for integer"
+license = "Zlib"
+repository = "https://github.com/binator/number"
+readme = "readme.md"
+keywords = ["parsing", "combinator", "ascii"]
+categories = ["parsing"]
+edition = "2021"
+
+include = [
+  "readme.md",
+  "license.md",
+  "Cargo.toml",
+  "rustfmt.toml",
+  "src/**/*.rs",
+]
+
+[features]
+radix = ["num-traits"]
+default = ["radix"]
+
+[dependencies]
+binator_core = "0.0.2"
+binator_utils = "0.0.0"
+binator_base = "0.0.0"
+paste = "1"
+
+[dependencies.tracing]
+version = "0.1"
+optional = true
+
+[dependencies.num-traits]
+version = "0.2"
+optional = true
+
+[dev-dependencies]
+derive_more = "0.99"
+rand = "0.8.4"
+
+binator_core = { version = "0.0.2", features = ["tracing"]}
+binator_utils = { version = "0.0.0", features = ["tracing"] }
+binator_base = { version = "0.0.0", features = ["tracing"] }
+binator_context = { version = "0.0.0", features = ["tracing"] }
+
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["env-filter", "fmt"]}
+env_logger = "0.9"
+test-log = { version = "0.2.10", features = ["trace"] }
